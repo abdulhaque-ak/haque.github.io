@@ -26,16 +26,28 @@
     <link rel="alternate stylesheet" type="text/css" title="red" href="css/skins/red.css" />
     <link rel="alternate stylesheet" type="text/css" title="yellow" href="css/skins/yellow.css" />
     <link rel="alternate stylesheet" type="text/css" title="yellowgreen" href="css/skins/yellowgreen.css" />
-    <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" /> -->
 
     <!-- Template JS Files -->
     <script src="js/modernizr.custom.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("l_t6ornyTWb_h2RVw");
+        })();
+    </script>
 
 </head>
 
 <body class="dark">
     <!-- Wrapper Starts -->
     <div class="wrapper">
+        <div class="load-div">
+            <div class="mail-loader"></div>
+            <span>Loading... <br />Please wait</span>
+        </div>
         <div class="main-picture woman hide-on-med-and-down">
         </div>
         <div id="bl-main" class="bl-main">
@@ -97,7 +109,7 @@
                             <div class="col s12 m8 l12 xl12 personal-info section-padding">
                                 <h6 class="uppercase"><i class="fa fa-user"></i> Personal Info</h6>
                                 <div class="col m12 l12 xl9 p-none">
-                                    <p class="second-font">I'm a Freelance Developer based in Kerala,
+                                    <p class="second-font">I'm a Developer based in Kerala,
                                         India.
                                         I have serious passion for Mobile Application & Website Development, Debugging,
                                         Testing and Deployment.
@@ -107,6 +119,8 @@
                                     <ul class="second-font list-1">
                                         <li><span class="font-weight-700">Birthday: </span>15 May 1996 </li>
                                         <li><span class="font-weight-700">Nationality: </span>Indian</li>
+                                        <li><span class="font-weight-700">Location: </span>Malappuram, Kerala</li>
+                                        <li><span class="font-weight-700">Email: </span>abdulhaqueak@gmail.com</li>
                                     </ul>
                                 </div>
                                 <div class="col s12 m12 l6 p-none">
@@ -114,7 +128,6 @@
                                         <li><span class="font-weight-700">Phone: </span>+91 86 06 69 42 41</li>
                                         <li><span class="font-weight-700">Qualification: </span>B Tech, CSE</li>
                                         <li><span class="font-weight-700">City: </span>Kerala, India</li>
-                                        <li><span class="font-weight-700">Email: </span>abdulhaqueak@gmail.com</li>
                                         <li><span class="font-weight-700">Freelance: </span>Available</li>
                                     </ul>
                                 </div>
@@ -175,8 +188,9 @@
                                                         </h6>
                                                         <span class="date"><i class="fa fa-calendar-o"></i> 2022 -
                                                             Present</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Phasellus pretium orci sit amet mi ullamcorper</p>
+                                                        <p>Projects : E-Commerce App, Business Distribution App, Food
+                                                            Delivery App, Websites
+                                                        </p>
                                                     </div>
                                                     <!-- Single Experience Ends -->
                                                     <span class="separator"></span>
@@ -187,8 +201,7 @@
                                                         </h6>
                                                         <span class="date"><i class="fa fa-calendar-o"></i> 2020 -
                                                             2021</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Phasellus pretium orci sit amet mi ullamcorper</p>
+                                                        <p>Projects : E-Commerce App, Food Delivery App, Websites </p>
                                                     </div>
                                                     <!-- Single Experience Ends -->
                                                     <span class="separator"></span>
@@ -199,8 +212,7 @@
                                                         </h6>
                                                         <span class="date"><i class="fa fa-calendar-o"></i> 2018 -
                                                             2019</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Phasellus pretium orci sit amet mi ullamcorper</p>
+                                                        <p>Product Development, Websites, Content Creation</p>
                                                     </div>
                                                     <!-- Single Experience Ends -->
                                                 </div>
@@ -328,7 +340,14 @@
                                                                         class="fa fa-star-o"></i>
                                                                 </p>
                                                             </div>
-
+                                                            <div class="resume-content">
+                                                                <h6 class="uppercase">Figma</h6>
+                                                                <p><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i> <i
+                                                                        class="fa fa-star-o"></i> <i
+                                                                        class="fa fa-star-o"></i>
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                         <!-- Skills Row Ends -->
                                                     </div>
@@ -505,7 +524,7 @@
                                         out the form below and I will reply you shortly.
                                     </p>
                                 </div>
-                                <form class="contactform" method="post">
+                                <form id="contact-form">
                                     <!-- Name Field Starts -->
                                     <div class="input-field second-font">
                                         <i class="fa fa-user prefix"></i>
@@ -516,28 +535,33 @@
                                     <!-- Email Field Starts -->
                                     <div class="input-field second-font">
                                         <i class="fa fa-envelope prefix"></i>
-                                        <input id="email" type="email" name="email" class="validate" required>
+                                        <input id="email_id" type="email" name="email" class="validate" required>
                                         <label for="email">Your Email</label>
+                                    </div>
+                                    <div class="input-field second-font">
+                                        <i class="fa fa-phone prefix"></i>
+                                        <input id="phone" type="text" name="phone" class="validate" required>
+                                        <label for="phone">Your Contact Number</label>
                                     </div>
                                     <!-- Email Field Ends -->
                                     <!-- Comment Textarea Starts -->
                                     <div class="input-field second-font">
                                         <i class="fa fa-comments prefix"></i>
-                                        <textarea id="comment" name="comment" class="materialize-textarea"
+                                        <textarea id="message" name="message" class="materialize-textarea"
                                             required></textarea>
-                                        <label for="comment">Your Comment</label>
+                                        <label for="comment">Your Message</label>
                                     </div>
                                     <!-- Comment Textarea Ends -->
                                     <!-- Submit Form Button Starts -->
-                                    <div class="col s12 m12 l9 xl8 submit-form">
+                                    <div class="col s12 m12 l9 xl8">
                                         <button class="btn font-weight-700" type="submit" name="send">
                                             Send Message <i class="fa fa-send"></i>
                                         </button>
                                     </div>
                                     <!-- Submit Form Button Ends -->
-                                    <div class="col s12 m12 l8 xl8 form-message">
+                                    <!-- <div class="col s12 m12 l8 xl8 form-message">
                                         <span class="output_message center-align font-weight-700 uppercase"></span>
-                                    </div>
+                                    </div> -->
                                 </form>
                             </div>
                             <!-- Contact Form Ends -->
@@ -634,10 +658,11 @@
     <script src="js/boxlayout.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/contact.js"></script>
     <script src="js/custom.js"></script>
 
     <!-- Live Style Switcher JS File - only demo -->
-    <script src="js/styleswitcher.js"></script>
+    <!-- <script src="js/styleswitcher.js"></script> -->
 </body>
 
 
